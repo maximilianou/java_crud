@@ -8,7 +8,7 @@ CONTACTO.log = function(txt) {
 CONTACTO.logJSON = function(responseText) {
     var resp = JSON.parse(responseText);
     for (var clave in resp) {
-        CONTACTO.log("[" + (new Date()) + "] " + clave + ": " + resp[clave]);
+        CONTACTO.log(clave + ": " + resp[clave] + "  [" + (new Date()) + "] ");
     }
 };
 
@@ -33,10 +33,11 @@ CONTACTO.get = function(elid) {
     losParametros.email = elEmail.value;
 
     // Configura la consulta Ajax, a la Accion Contacto
-    promise.ajax('GET', 'srv/Contacto.php', JSON.stringify(losParametros)).then(function(error, text, xhr) {
+    promise.ajax('GET', 'Contacto', JSON.stringify(losParametros)).then(function(error, text, xhr) {
         if (error) {
             CONTACTO.log("ERROR: " + error);
         } else { // OK
+            CONTACTO.log(JSON.parse(text));
             CONTACTO.logJSON(JSON.parse(text));
         }
     });
@@ -53,7 +54,7 @@ CONTACTO.post = function(elid) {
     losParametros.email = elEmail.value;
 
     // Configura la consulta Ajax, a la Accion Contacto
-    promise.ajax('POST', 'srv/Contacto.php', JSON.stringify(losParametros)).then(function(error, text, xhr) {
+    promise.ajax('POST', 'Contacto', JSON.stringify(losParametros)).then(function(error, text, xhr) {
         if (error) {
             CONTACTO.log("ERROR: " + error);
         } else { // OK
@@ -70,7 +71,7 @@ CONTACTO.put = function(elid) {
     losParametros.email = elEmail.value;
 
     // Configura la consulta Ajax, a la Accion Contacto
-    promise.ajax('PUT', 'srv/Contacto.php', JSON.stringify(losParametros)).then(function(error, text, xhr) {
+    promise.ajax('PUT', 'Contacto', JSON.stringify(losParametros)).then(function(error, text, xhr) {
         if (error) {
             CONTACTO.log("ERROR: " + error);
         } else { // OK
@@ -88,7 +89,7 @@ CONTACTO.delete = function(elid) {
     losParametros.email = elEmail.value;
 
     // Configura la consulta Ajax, a la Accion Contacto
-    promise.ajax('DELETE', 'srv/Contacto.php', JSON.stringify(losParametros)).then(function(error, text, xhr) {
+    promise.ajax('DELETE', 'Contacto', JSON.stringify(losParametros)).then(function(error, text, xhr) {
         if (error) {
             CONTACTO.log("ERROR: " + error);
         } else { // OK
