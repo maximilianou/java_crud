@@ -11,7 +11,9 @@ import org.hsqldb.server.ServerAcl;
 public class DB {
 
     private static DB INSTANCE = null;
-    private static String LABASE = "file:"+System.getProperty("user.home")+"/personas.hsqldb";
+    private static String LABASE = "jdbc:hsqldb:file:"+System.getProperty("user.home")+"/personas.hsqldb";
+    private static String LABASEUSUARIO = "SA";
+    private static String LABASECLAVE = "";
     public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
         if (INSTANCE == null) {
             INSTANCE = new DB();
@@ -19,7 +21,7 @@ public class DB {
         return INSTANCE;
     }
 
-    private DB() throws ClassNotFoundException,
+    public void instanciarHSQLDB() throws ClassNotFoundException,
             IOException, SQLException {
         try {
             Class.forName("org.hsqldb.jdbc.JDBCDriver");
@@ -39,28 +41,15 @@ public class DB {
             throw new SQLException("Acceso denegado:" + e.getMessage());
         }
     }
+    private DB() throws ClassNotFoundException,
+            IOException, SQLException {
+      //this.instanciarHSQLDB();
+    }
 
     public Connection getConnection() throws ClassNotFoundException,
             IOException, SQLException {
-        DB.getInstance();
-        return DriverManager.getConnection("jdbc:hsqldb:"+LABASE, "SA", "");
+        //DB.getInstance();
+        return DriverManager.getConnection(LABASE, LABASEUSUARIO, LABASECLAVE);
     }
 
-    public void shutdown() throws ClassNotFoundException,
-            IOException, SQLException {
-        Connection c = null;
-        PreparedStatement pstmt = null;
-        try {
-            c = getConnection();
-            pstmt = c.prepareStatement("SHUTDOWN;");
-            pstmt.execute();
-            pstmt.close();
-        } finally {
-            try {
-                pstmt.close();
-            } finally {
-                c.close();
-            }
-        }
-    }
 }
