@@ -8,7 +8,7 @@ public class PersonaDao {
 
     private PersonaDao() throws ClassNotFoundException,
             IOException, SQLException {
-        crear();
+//        crear();
     }
     private static PersonaDao INSTANCE = null;
 
@@ -159,11 +159,6 @@ public class PersonaDao {
             a.setNombre("Enzo");
             a.setEmail("Enzo@gmail.com");
             PersonaDao.insertar(a);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        try {
-            DB.getInstance().shutdown();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
