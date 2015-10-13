@@ -59,12 +59,11 @@ PERSONA.consultar = function(){
     xhr.open("GET","../PersonaServer");
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
-            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-            
+            //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
             var templatePersonas = document.querySelector("#templatePersonas").innerHTML;
             var personas = {};
             personas.listaPersonas = JSON.parse( xhr.responseText );
-            document.querySelector('#panelResultados').innerHTML += Mustache.render(  templatePersonas, personas);
+            document.querySelector('#panelResultados').innerHTML = Mustache.render(  templatePersonas, personas);
         }
     };
     // objeto para enviar los parametros del formulario
