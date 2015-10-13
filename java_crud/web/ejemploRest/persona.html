@@ -23,7 +23,16 @@
 
         </section>
 
-
+        <script type="text/template" id="templatePersonas">
+            <table>
+            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
+            {{#listaPersonas}}
+            <tr><td>{{nombre}}</td><td>{{email}}</td><td>{{id}}</td></tr>
+            {{/listaPersonas}}
+            
+            </table>
+        </script>
+        <script src="js/mustache.js"></script>
         <script src="js/persona.js"></script>
     </body>
 </html>

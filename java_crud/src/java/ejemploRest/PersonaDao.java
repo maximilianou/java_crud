@@ -8,7 +8,6 @@ public class PersonaDao {
 
     private PersonaDao() throws ClassNotFoundException,
             IOException, SQLException {
-//        crear();
     }
     private static PersonaDao INSTANCE = null;
 
