@@ -54,7 +54,7 @@ public class PersonaServer extends HttpServlet {
                 String texto = buff_entrada.readLine();
                 Persona personaParametro = convertir.fromJson(texto, Persona.class);
                 PersonaDao.insertar(personaParametro);
-                out.println( convertir.toJson("OK") );
+                out.println(convertir.toJson("OK"));
 
             } catch (ClassNotFoundException ex) {
                 out.println("" + ex.getMessage());
@@ -70,14 +70,18 @@ public class PersonaServer extends HttpServlet {
     protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BufferedReader buff_entrada = new BufferedReader(
-                    new InputStreamReader(request.getInputStream()));
-            String texto = buff_entrada.readLine();
-            System.out.println(texto);
-            System.err.println(texto);
-            /* TODO: Falta hacer .. */
-
-            out.println("" + texto);
+            try {
+                Gson convertir = new Gson();
+                Persona personaParametro = convertir.fromJson(request.getReader(), Persona.class);
+                PersonaDao.actualizar(personaParametro);
+                out.println(convertir.toJson("OK"));
+            } catch (ClassNotFoundException ex) {
+                out.println("" + ex.getMessage());
+            } catch (SQLException ex) {
+                out.println("" + ex.getMessage());
+            } finally {
+                out.close();
+            }
         }
     }
 
@@ -85,14 +89,20 @@ public class PersonaServer extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            BufferedReader buff_entrada = new BufferedReader(
-                    new InputStreamReader(request.getInputStream()));
-            String texto = buff_entrada.readLine();
-            System.out.println(texto);
-            System.err.println(texto);
+            try {
 
-            /* TODO: Falta hacer .. */
-            out.println("" + texto);
+                Gson convertir = new Gson();
+                Persona personaParametro = convertir.fromJson(request.getReader(), Persona.class);
+                PersonaDao.borrar(personaParametro);
+                out.println(convertir.toJson("OK"));
+
+            } catch (ClassNotFoundException ex) {
+                out.println("" + ex.getMessage());
+            } catch (SQLException ex) {
+                out.println("" + ex.getMessage());
+            } finally {
+                out.close();
+            }
         }
     }
 

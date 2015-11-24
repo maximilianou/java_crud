@@ -119,7 +119,7 @@ public class PersonaDao {
             }
         }
     }
-    private final static String SQL_PERSONAS_DELETE = "DELETE personas "
+    private final static String SQL_PERSONAS_DELETE = "DELETE FROM personas "
             + " WHERE per_id = ?;";
 
     public static void borrar(Persona a) throws ClassNotFoundException,

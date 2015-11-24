@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div>Contacto</div>
+        <section id="panelFiltro">
+            <form action="" method="GET">
+                <input type="number" name="persona_id" id="persona_id" />
+                <input type="text" name="persona_nombre" id="persona_nombre" maxlength="200" />
+                <input type="email" name="persona_email" id="persona_email" maxlength="200" />
+                <input type="button" id="btnInsertar" value="Insertar" />
+                <input type="button" id="btnEliminar" value="Eliminar" />
+                <input type="button" id="btnActualizar" value="Actualizar" />
+                <input type="button" id="btnConsultar" value="Consultar" />
+                <!-- input type="button" id="btnShutdown" value="Shutdown" / -->
+            </form>
+        </section>
+        <section id="panelResultados">
+
+        </section>
+
+        <script type="text/template" id="templatePersonas">
+            <table>
+            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
+            {{#listaPersonas}}
+              <tr>
+                  <td>{{id}}</td>
+                  <td><input type='text' value='{{nombre}}' id='persona_nombre_{{id}}' /></td>
+                  <td><input type='email' value='{{email}}' id='persona_email_{{id}}' /></td>
+                  <td><input type='button' value='Modificar  {{id}}' onclick='PERSONA.actualizar({{id}});' /></td>
+                  <td><input type='button' value='Eliminar  {{id}}' onclick='PERSONA.eliminar({{id}});' /></td>
+              </tr>
+            {{/listaPersonas}}
+            
+            </table>
+        </script>
+        <script src="js/mustache.js"></script>
+        <script src="js/persona02.js"></script>
+    </body>
+</html>
