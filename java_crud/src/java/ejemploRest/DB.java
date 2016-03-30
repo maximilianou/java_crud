@@ -11,8 +11,8 @@ public class DB {
     private static DB INSTANCE = null;
     //private static String LABASE = "jdbc:hsqldb:file:"+System.getProperty("user.home")+"/personas.hsqldb";
     private static String LABASE = "jdbc:mysql://localhost/dbrest";
-    private static String LABASEUSUARIO = "root";
-    private static String LABASECLAVE = "root";
+    private static String LABASEUSUARIO = "appuser";  // "root";
+    private static String LABASECLAVE = "appuser";    //"root";
     public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
         if (INSTANCE == null) {
             INSTANCE = new DB();
