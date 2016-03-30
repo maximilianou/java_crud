@@ -18,25 +18,6 @@ public class PersonaDao {
         }
         return INSTANCE;
     }
-    private final static String SQL_PERSONAS_CREATE = "CREATE TABLE IF NOT EXISTS "
-            + " personas ( per_id IDENTITY, per_nombre VARCHAR(255), "
-            + " per_email VARCHAR(255)  );";
-
-    public void crear() throws ClassNotFoundException, IOException, SQLException {
-        Connection c = null;
-        PreparedStatement ptsmt = null;
-        try {
-            c = DB.getInstance().getConnection();
-            ptsmt = c.prepareStatement(SQL_PERSONAS_CREATE);
-            ptsmt.execute();
-        } finally {
-            try {
-                ptsmt.close();
-            } finally {
-                c.close();
-            }
-        }
-    }
     private final static String SQL_PERSONAS_SELECT = "SELECT * FROM personas;";
 
     public ArrayList<Persona> obtener() throws ClassNotFoundException,
