@@ -1,9 +1,13 @@
+// Javascript: Inicializacion de Objeto PERSONA Instanciado con Llaves
 PERSONA = {};
 
+// Creacion de un Metodo insertar() en el Objeto PERSONA
 PERSONA.insertar = function(){
+    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo INSERTAR, Accion PersonaServer
     xhr.open("POST","../PersonaServer");
+    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
@@ -17,10 +21,13 @@ PERSONA.insertar = function(){
     var personaStringJSON = JSON.stringify(persona);
     xhr.send(  personaStringJSON );
 };
+// Creacion de un Metodo actualizar() en el Objeto PERSONA
 PERSONA.actualizar = function(){
+    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo ACTUALIZAR, Accion PersonaServer
     xhr.open("PUT","../PersonaServer");
+    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
@@ -35,10 +42,13 @@ PERSONA.actualizar = function(){
     var personaStringJSON = JSON.stringify(persona);
     xhr.send( personaStringJSON );
 };
+// Creacion de un Metodo eliminar() en el Objeto PERSONA
 PERSONA.eliminar = function(){
+    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo ELIMINAR, Accion PersonaServer
     xhr.open("DELETE","../PersonaServer");
+    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
@@ -53,10 +63,13 @@ PERSONA.eliminar = function(){
     var personaStringJSON = JSON.stringify(persona);
     xhr.send( personaStringJSON );
 };
+// Creacion de un Metodo consultar() en el Objeto PERSONA
 PERSONA.consultar = function(){
+    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo CONSULTAR, Accion PersonaServer
     xhr.open("GET","../PersonaServer");
+    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
             //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
@@ -77,17 +90,19 @@ PERSONA.consultar = function(){
 };
 
 /////////////////////////////////////////
-
+// Inicializa en la pagina HTML los Eventos que ejecutan el Javascript
 PERSONA.inicializar = function(){
-   var elemInsertar = document.querySelector('#btnInsertar');    
-   elemInsertar.setAttribute('onclick',"PERSONA.insertar();");
-   var elemActualizar = document.querySelector('#btnActualizar');    
-   elemActualizar.setAttribute('onclick',"PERSONA.actualizar();");
-   var elemEliminar = document.querySelector('#btnEliminar');    
-   elemEliminar.setAttribute('onclick',"PERSONA.eliminar();");
-   var elemConsultar = document.querySelector('#btnConsultar');    
-   elemConsultar.setAttribute('onclick',"PERSONA.consultar();");
+    // Agregar en los botones visuales HTML, las acciones Javascript
+    var elemInsertar = document.querySelector('#btnInsertar');    
+    elemInsertar.setAttribute('onclick',"PERSONA.insertar();");
+    var elemActualizar = document.querySelector('#btnActualizar');    
+    elemActualizar.setAttribute('onclick',"PERSONA.actualizar();");
+    var elemEliminar = document.querySelector('#btnEliminar');    
+    elemEliminar.setAttribute('onclick',"PERSONA.eliminar();");
+    var elemConsultar = document.querySelector('#btnConsultar');    
+    elemConsultar.setAttribute('onclick',"PERSONA.consultar();");
    
 };
+// Se llama 
 PERSONA.inicializar();
 
