@@ -75,26 +75,6 @@ PERSONA.consultar = function(){
     var personaStringJSON = JSON.stringify(persona);
     xhr.send( personaStringJSON );
 };
-/////////////////////////////////////////////////
-//PERSONA.shutdown = function(){
-//    var xhr = new XMLHttpRequest();
-//    // Metodo ELIMINAR, Accion PersonaServer
-//    xhr.open("DELETE","../DBServer");
-//    xhr.onreadystatechange = function(){
-//        if( xhr.readyState === 4 && xhr.status === 200){
-//            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-//        }
-//    };
-//    // objeto para enviar los parametros del formulario
-//    var persona = {};
-//    persona.id = document.querySelector("#persona_id").value;
-//    persona.nombre = document.querySelector("#persona_nombre").value;
-//    persona.email = document.querySelector("#persona_email").value;
-//    // formato del mensaje en JSON
-//    var personaStringJSON = JSON.stringify(persona);
-//    xhr.send( personaStringJSON );
-//};
-
 /////////////////////////////////////////
 
 PERSONA.inicializar = function(){
