@@ -9,9 +9,9 @@ PERSONA.insertar = function(){
     xhr.open("POST","../PersonaServer");
     // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){
+        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        }
+        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
@@ -19,6 +19,7 @@ PERSONA.insertar = function(){
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
+    // Activa el Envio por Red del Ajax
     xhr.send(  personaStringJSON );
 };
 // Creacion de un Metodo actualizar() en el Objeto PERSONA
@@ -29,9 +30,9 @@ PERSONA.actualizar = function(){
     xhr.open("PUT","../PersonaServer");
     // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){
+        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        }
+        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
@@ -40,6 +41,7 @@ PERSONA.actualizar = function(){
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
+    // Activa el Envio por Red del Ajax
     xhr.send( personaStringJSON );
 };
 // Creacion de un Metodo eliminar() en el Objeto PERSONA
@@ -50,9 +52,9 @@ PERSONA.eliminar = function(){
     xhr.open("DELETE","../PersonaServer");
     // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){
+        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
             document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        }
+        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
@@ -61,6 +63,7 @@ PERSONA.eliminar = function(){
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
+    // Activa el Envio por Red del Ajax
     xhr.send( personaStringJSON );
 };
 // Creacion de un Metodo consultar() en el Objeto PERSONA
@@ -71,13 +74,13 @@ PERSONA.consultar = function(){
     xhr.open("GET","../PersonaServer");
     // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){
+        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
             //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
             var templatePersonas = document.querySelector("#templatePersonas").innerHTML;
             var personas = {};
             personas.listaPersonas = JSON.parse( xhr.responseText );
             document.querySelector('#panelResultados').innerHTML = Mustache.render(  templatePersonas, personas);
-        }
+        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
@@ -86,6 +89,7 @@ PERSONA.consultar = function(){
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
+    // Activa el Envio por Red del Ajax
     xhr.send( personaStringJSON );
 };
 
@@ -103,6 +107,7 @@ PERSONA.inicializar = function(){
     elemConsultar.setAttribute('onclick',"PERSONA.consultar();");
    
 };
-// Se llama 
+// Se llama a la inicializacion de la pagina, 
+// incorpora de forma NO Intrusiva el codigo javascript en el html
 PERSONA.inicializar();
 
