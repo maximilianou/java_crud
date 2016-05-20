@@ -14,7 +14,7 @@ PERSONA.insertar = function(){
         } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
     // objeto para enviar los parametros del formulario
-    var persona = {};
+    var persona = {}; // new Object();
     persona.nombre = document.querySelector("#persona_nombre").value;
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON

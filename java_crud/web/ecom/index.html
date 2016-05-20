@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo.css" rel="stylesheet" />
+    </head>
+    <body>
+        
+        <article id="panelComandos">
+            <input type="button" id="elboton" value="Consultar" />
+            
+        </article>
+        
+        <article id="panelResultados" class="panel">
+            
+        </article>
+        
+        <article id="panelResultados2" class="panel">
+            
+        </article>
+        <script type="text/template" id="laplantilla">
+            <ul>
+            {{#listaNotas}}
+                <li class="panel">{{not_titulo}} ({{not_id}})</li>
+            {{/listaNotas}}
+            </ul>
+        </script>
+        <script src="js/mustache.js"></script>
+        <script src="js/programa.js"></script>
+    </body>
+</html>
