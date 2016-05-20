@@ -10,6 +10,7 @@
         
         <article id="panelComandos">
             <input type="button" id="elboton" value="Consultar" />
+            <input type="button" id="elboton2" value="Consultar" />
             
         </article>
         
@@ -27,6 +28,19 @@
             {{/listaNotas}}
             </ul>
         </script>
+
+        <script type="text/template" id="laplantilla2">
+            <table border='1'>
+            {{#listaNotas}}
+                <tr>
+                <td>{{not_titulo}}
+                </td><td>{{not_id}}
+                </td>
+                </tr>
+            {{/listaNotas}}
+            </table>
+        </script>
+        
         <script src="js/mustache.js"></script>
         <script src="js/programa.js"></script>
     </body>

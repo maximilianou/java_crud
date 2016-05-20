@@ -11,7 +11,8 @@ import java.sql.*;
 import java.util.*;
 import com.google.gson.*;
 
-@WebServlet(name = "NotasAJson", urlPatterns = {"/presentacion01/NotasAJson"})
+@WebServlet(name = "NotasAJson", 
+        urlPatterns = {"/presentacion01/NotasAJson"})
 public class NotasAJson extends HttpServlet {
 
     @Override
