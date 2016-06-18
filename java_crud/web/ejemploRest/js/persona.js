@@ -1,6 +1,6 @@
 // Javascript: Inicializacion de Objeto PERSONA Instanciado con Llaves
 PERSONA = {};
-
+//TODO: Recordar poner mas comentarios
 // Creacion de un Metodo insertar() en el Objeto PERSONA
 PERSONA.insertar = function(){
     // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
