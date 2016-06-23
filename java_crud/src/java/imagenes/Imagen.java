@@ -23,9 +23,11 @@ public class Imagen extends HttpServlet {
 
         Connection conn = null;
         //TODO: Ejemplo de crud de imagenes basico.
+        //TODO: Ejemplo de crud de imagenes basico.
+        //TODO: Ejemplo de crud de imagenes basico.
+        //TODO: Ejemplo de crud de imagenes basico.
 //        try {
 //            conn = ConexionDB.getInstance().getConnection();
-//
 //            String consulta = "select pro_img from productos where pro_id = ?;";
 //            PreparedStatement statement = conn.prepareStatement(consulta);
 //
