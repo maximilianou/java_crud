@@ -20,11 +20,9 @@ public class Imagen extends HttpServlet {
             throws ServletException, IOException {
         //response.setHeader("expires", "0");
         //response.setContentType("image/jpg");
-
+        //TODO: Verificar que entiendan lo del repositorio como lugar central
+        // de trabajo, como le dice Edu.
         Connection conn = null;
-        //TODO: Ejemplo de crud de imagenes basico.
-        //TODO: Ejemplo de crud de imagenes basico.
-        //TODO: Ejemplo de crud de imagenes basico.
         //TODO: Ejemplo de crud de imagenes basico.
 //        try {
 //            conn = ConexionDB.getInstance().getConnection();
