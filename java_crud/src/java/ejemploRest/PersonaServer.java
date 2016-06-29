@@ -83,7 +83,10 @@ public class PersonaServer extends HttpServlet {
         try {
 
             Gson convertir = new Gson();
-            Persona personaParametro = convertir.fromJson(request.getReader(), Persona.class);
+            
+            //Persona personaParametro = convertir.fromJson(request.getReader(), Persona.class);
+            Persona personaParametro = convertir.fromJson(request.getParameter("q"), Persona.class);
+            
             PersonaDao.borrar(personaParametro);
             out.println(convertir.toJson("OK"));
 
