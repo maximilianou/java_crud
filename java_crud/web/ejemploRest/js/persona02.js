@@ -36,14 +36,7 @@ PERSONA.actualizar = function(paramId){
     xhr.send( personaStringJSON );
 };
 PERSONA.eliminar = function(paramId){
-    var xhr = new XMLHttpRequest();
-    // Metodo ELIMINAR, Accion PersonaServer
-    xhr.open("DELETE","../PersonaServer");
-    xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){
-            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        }
-    };
+
     // objeto para enviar los parametros del formulario
     var persona = {};
     persona.id = paramId;
@@ -51,7 +44,17 @@ PERSONA.eliminar = function(paramId){
     persona.email = document.querySelector("#persona_email_"+paramId).value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
-    xhr.send( personaStringJSON );
+
+    var xhr = new XMLHttpRequest();
+    // Metodo ELIMINAR, Accion PersonaServer
+    xhr.open("DELETE","../PersonaServer?&q=" + personaStringJSON);
+    xhr.onreadystatechange = function(){
+        if( xhr.readyState === 4 && xhr.status === 200){
+            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
+        }
+    };
+    //xhr.send( personaStringJSON );
+    xhr.send(  );
 };
 PERSONA.consultar = function(){
     var xhr = new XMLHttpRequest();
