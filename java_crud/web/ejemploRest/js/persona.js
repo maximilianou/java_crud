@@ -7,6 +7,8 @@ PERSONA.insertar = function(){
     var xhr = new XMLHttpRequest();
     // Metodo INSERTAR, Accion PersonaServer
     xhr.open("POST","../PersonaServer");
+    //xhr.setRequestHeader('enctype', 'multipart/form-data');
+    xhr.setRequestHeader('Content-Type', 'multipart/form-data');
     // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
@@ -17,6 +19,11 @@ PERSONA.insertar = function(){
     var persona = {}; // new Object();
     persona.nombre = document.querySelector("#persona_nombre").value;
     persona.email = document.querySelector("#persona_email").value;
+    persona.perfil = document.querySelector("#persona_perfil").value;
+    //TODO: Como suber el archivo con ajax, y javascript puro
+   //TODO: http://www.html5rocks.com/en/tutorials/file/dndfiles/
+   
+    alert(JSON.stringify(document.querySelector("#persona_perfil")));
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
     // Activa el Envio por Red del Ajax
