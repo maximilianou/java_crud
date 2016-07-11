@@ -8,3 +8,7 @@ body{
 td{
     background-color: salmon;
 }
+
+img{
+    width: 40px;
+}
