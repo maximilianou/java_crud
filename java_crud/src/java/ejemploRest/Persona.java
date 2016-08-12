@@ -26,8 +26,15 @@ public class Persona {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    /**
+     */
+    public void setEmail(String email) throws Exception {
+        if ( email.contains("@") ) {
+            this.email = email;
+        } else {
+            throw new Exception("Ponele Arroba al Email!!!!");
+        }
+
     }
 
     @Override
