@@ -23,6 +23,10 @@ PERSONA.insertar = function(){
     //TODO: Como suber el archivo con ajax, y javascript puro
    //TODO: http://www.html5rocks.com/en/tutorials/file/dndfiles/
    
+   
+   
+   
+   
 //    alert(JSON.stringify(document.querySelector("#persona_perfil")));
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
