@@ -31,6 +31,8 @@ public class PersonaServer extends HttpServlet {
             out.println("" + ex.getMessage());
         } catch (SQLException ex) {
             out.println("" + ex.getMessage());
+        } catch (Exception ex) {
+            out.println("" + ex.getMessage());
         } finally {
             out.close();
         }
@@ -45,7 +47,9 @@ public class PersonaServer extends HttpServlet {
 
             Gson convertir = new Gson();
             String texto = request.getReader().readLine();
+            
             Persona personaParametro = convertir.fromJson(texto, Persona.class);
+            personaParametro.validar();
             
             PersonaDao.insertar(personaParametro);
             out.println(convertir.toJson("OK"));
@@ -53,6 +57,8 @@ public class PersonaServer extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             out.println("" + ex.getMessage());
         } catch (SQLException ex) {
+            out.println("" + ex.getMessage());
+        } catch (Exception ex) {
             out.println("" + ex.getMessage());
         } finally {
             out.close();
@@ -71,6 +77,8 @@ public class PersonaServer extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             out.println("" + ex.getMessage());
         } catch (SQLException ex) {
+            out.println("" + ex.getMessage());
+        } catch (Exception ex) {
             out.println("" + ex.getMessage());
         } finally {
             out.close();
@@ -93,6 +101,8 @@ public class PersonaServer extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             out.println("" + ex.getMessage());
         } catch (SQLException ex) {
+            out.println("" + ex.getMessage());
+        } catch (Exception ex) {
             out.println("" + ex.getMessage());
         } finally {
             out.close();

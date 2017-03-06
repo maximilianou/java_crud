@@ -39,5 +39,9 @@ public class Persona {
     public String toString() {
         return "Persona: " + nombre + " : " + email;
     }
+    
+    public void validar() throws Exception{
+        this.setEmail( this.getEmail() );
+    }
 
 }
