@@ -19,63 +19,10 @@ PERSONA.insertar = function(){
     var persona = {}; // new Object();
     persona.nombre = document.querySelector("#persona_nombre").value;
     persona.email = document.querySelector("#persona_email").value;
-    persona.perfil = document.querySelector("#persona_perfil").value;
-    //TODO: Como suber el archivo con ajax, y javascript puro
-   //TODO: http://www.html5rocks.com/en/tutorials/file/dndfiles/
-   
-   
-   
-   
-   
-//    alert(JSON.stringify(document.querySelector("#persona_perfil")));
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
     // Activa el Envio por Red del Ajax
     xhr.send(  personaStringJSON );
-};
-// Creacion de un Metodo actualizar() en el Objeto PERSONA
-PERSONA.actualizar = function(){
-    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
-    var xhr = new XMLHttpRequest();
-    // Metodo ACTUALIZAR, Accion PersonaServer
-    xhr.open("PUT","../PersonaServer");
-    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
-    xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
-            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
-    };
-    // objeto para enviar los parametros del formulario
-    var persona = {};
-    persona.id = document.querySelector("#persona_id").value;
-    persona.nombre = document.querySelector("#persona_nombre").value;
-    persona.email = document.querySelector("#persona_email").value;
-    // formato del mensaje en JSON
-    var personaStringJSON = JSON.stringify(persona);
-    // Activa el Envio por Red del Ajax
-    xhr.send( personaStringJSON );
-};
-// Creacion de un Metodo eliminar() en el Objeto PERSONA
-PERSONA.eliminar = function(){
-    // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
-    var xhr = new XMLHttpRequest();
-    // Metodo ELIMINAR, Accion PersonaServer
-    xhr.open("DELETE","../PersonaServer");
-    // Metodo Respuesta que se ejecuta en y muestra al finalizar el AJAX.
-    xhr.onreadystatechange = function(){
-        if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
-            document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-        } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
-    };
-    // objeto para enviar los parametros del formulario
-    var persona = {};
-    persona.id = document.querySelector("#persona_id").value;
-    persona.nombre = document.querySelector("#persona_nombre").value;
-    persona.email = document.querySelector("#persona_email").value;
-    // formato del mensaje en JSON
-    var personaStringJSON = JSON.stringify(persona);
-    // Activa el Envio por Red del Ajax
-    xhr.send( personaStringJSON );
 };
 // Creacion de un Metodo consultar() en el Objeto PERSONA
 PERSONA.consultar = function(){
@@ -95,8 +42,7 @@ PERSONA.consultar = function(){
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
-    persona.id = document.querySelector("#persona_id").value;
-    persona.nombre = document.querySelector("#persona_nombre").value;
+     persona.nombre = document.querySelector("#persona_nombre").value;
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
@@ -110,10 +56,6 @@ PERSONA.inicializar = function(){
     // Agregar en los botones visuales HTML, las acciones Javascript
     var elemInsertar = document.querySelector('#btnInsertar');    
     elemInsertar.setAttribute('onclick',"PERSONA.insertar();");
-    var elemActualizar = document.querySelector('#btnActualizar');    
-    elemActualizar.setAttribute('onclick',"PERSONA.actualizar();");
-    var elemEliminar = document.querySelector('#btnEliminar');    
-    elemEliminar.setAttribute('onclick',"PERSONA.eliminar();");
     var elemConsultar = document.querySelector('#btnConsultar');    
     elemConsultar.setAttribute('onclick',"PERSONA.consultar();");
    

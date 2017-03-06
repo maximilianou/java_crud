@@ -10,13 +10,9 @@
         <div>Contacto</div>
         <section id="panelFiltro">
             <form action="" method="GET">
-                <input type="number" name="persona_id" id="persona_id" />
                 <input type="text" name="persona_nombre" id="persona_nombre" maxlength="200" />
                 <input type="email" name="persona_email" id="persona_email" maxlength="200" />
-                <input type="file" name="persona_perfil" id="persona_perfil"  />
                 <input type="button" id="btnInsertar" value="Insertar" />
-                <input type="button" id="btnEliminar" value="Eliminar" />
-                <input type="button" id="btnActualizar" value="Actualizar" />
                 <input type="button" id="btnConsultar" value="Consultar" />
                 <!-- input type="button" id="btnShutdown" value="Shutdown" / -->
             </form>
@@ -33,7 +29,6 @@
                   <td>{{nombre}}</td>
                   <td>{{email}}</td>
                   <td>{{id}}</td>
-                  <td><img src='../Imagen?&id={{id}}' /></td>
               </tr>
             {{/listaPersonas}}
             
