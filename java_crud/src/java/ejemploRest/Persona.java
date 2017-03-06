@@ -26,8 +26,6 @@ public class Persona {
         return email;
     }
 
-    /**
-     */
     public void setEmail(String email) throws Exception {
         if ( email.contains("@") ) {
             this.email = email;

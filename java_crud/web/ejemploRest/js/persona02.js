@@ -71,7 +71,6 @@ PERSONA.consultar = function(){
     };
     // objeto para enviar los parametros del formulario
     var persona = {};
-    persona.id = document.querySelector("#persona_id").value;
     persona.nombre = document.querySelector("#persona_nombre").value;
     persona.email = document.querySelector("#persona_email").value;
     // formato del mensaje en JSON
