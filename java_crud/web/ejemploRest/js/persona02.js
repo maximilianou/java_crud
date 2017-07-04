@@ -63,10 +63,9 @@ PERSONA.consultar = function(){
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
             //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-            var templatePersonas = document.querySelector("#templatePersonas").innerHTML;
-            var personas = {};
-            personas.listaPersonas = JSON.parse( xhr.responseText );
-            document.querySelector('#panelResultados').innerHTML = Mustache.render(  templatePersonas, personas);
+            var personas = JSON.parse( xhr.responseText );
+            var templatePersonas = document.querySelector("#templatePersonasES6").innerHTML;
+            document.querySelector('#panelResultados').innerHTML = eval( templatePersonas );
         }
     };
     // objeto para enviar los parametros del formulario
