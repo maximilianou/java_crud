@@ -1,6 +1,5 @@
 // Javascript: Inicializacion de Objeto PERSONA Instanciado con Llaves
 PERSONA = {};
-//TODO: Recordar poner mas comentarios
 // Creacion de un Metodo insertar() en el Objeto PERSONA
 PERSONA.insertar = function(){
     // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
@@ -34,22 +33,14 @@ PERSONA.consultar = function(){
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){ // Caso de OK 
             //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
-            var templatePersonas = document.querySelector("#templatePersonas").innerHTML;
-            var personas = {};
-            personas.listaPersonas = JSON.parse( xhr.responseText );
-            document.querySelector('#panelResultados').innerHTML = Mustache.render(  templatePersonas, personas);
+            var personas = JSON.parse( xhr.responseText );
+            var templatePersonas = document.querySelector("#templatePersonasES6").innerHTML;
+            document.querySelector('#panelResultados').innerHTML = eval( templatePersonas );
         } // Lista de codigos de error https://tools.ietf.org/html/rfc7231
     };
-    // objeto para enviar los parametros del formulario
-    var persona = {};
-     persona.nombre = document.querySelector("#persona_nombre").value;
-    persona.email = document.querySelector("#persona_email").value;
-    // formato del mensaje en JSON
-    var personaStringJSON = JSON.stringify(persona);
     // Activa el Envio por Red del Ajax
-    xhr.send( personaStringJSON );
+    xhr.send( );
 };
-
 /////////////////////////////////////////
 // Inicializa en la pagina HTML los Eventos que ejecutan el Javascript
 PERSONA.inicializar = function(){

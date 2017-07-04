@@ -7,8 +7,11 @@ body{
 }
 td{
     background-color: salmon;
+    padding: 2px;
 }
 
-img{
-    width: 40px;
+.persona_item{
+    background-color: brown;
+    color: snow;
+    font-size: large;
 }

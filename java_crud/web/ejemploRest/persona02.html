@@ -22,6 +22,26 @@
 
         </section>
 
+        <script type="text/template" id="templatePersonasES6">
+`
+    <table>
+            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
+    ${ personas.map( persona => 
+    `
+              <tr class='persona_item'>
+                  <td>${persona.id}</td>
+                  <td><input type='text' value='${persona.nombre}' id='persona_nombre_${persona.id}' /></td>
+                  <td><input type='email' value='${persona.email}' id='persona_email_${persona.id}' /></td>
+                  <td><input type='button' value='Modificar  ${persona.id}' onclick='PERSONA.actualizar(${persona.id});' /></td>
+                  <td><input type='button' value='Eliminar  ${persona.id}' onclick='PERSONA.eliminar(${persona.id});' /></td>
+              </tr>
+    `
+        ).join('')
+      }
+    </table>
+`            
+        </script>
+        
         <script type="text/template" id="templatePersonas">
             <table>
             <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
@@ -34,7 +54,6 @@
                   <td><input type='button' value='Eliminar  {{id}}' onclick='PERSONA.eliminar({{id}});' /></td>
               </tr>
             {{/listaPersonas}}
-            
             </table>
         </script>
         <script src="js/mustache.js"></script>

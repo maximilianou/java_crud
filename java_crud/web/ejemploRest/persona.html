@@ -21,19 +21,23 @@
 
         </section>
 
-        <script type="text/template" id="templatePersonas">
-            <table>
-            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
-            {{#listaPersonas}}
-              <tr>
-                  <td>{{nombre}}</td>
-                  <td>{{email}}</td>
-                  <td>{{id}}</td>
+        <script type="text/template" id="templatePersonasES6">
+`
+<table>
+    ${personas.map( persona =>
+              `
+              <tr class='persona_item'>
+                  <td>${persona.id}</td>
+                  <td>${persona.nombre}</td>
+                  <td>${persona.email}</td>
               </tr>
-            {{/listaPersonas}}
-            
-            </table>
+              `
+    ).join('')
+    }
+</table>
+`;
         </script>
+
         <script src="js/mustache.js"></script>
         <script src="js/persona.js"></script>
     </body>
