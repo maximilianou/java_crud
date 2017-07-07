@@ -1,4 +1,4 @@
-CREATE DATABASE dbrest DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE dbrest;
 USE dbrest;
 
 -- --------------------------------------------------------
