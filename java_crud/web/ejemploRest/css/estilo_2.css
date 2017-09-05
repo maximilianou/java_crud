@@ -1,0 +1,19 @@
+*{
+    margin:0px;
+    padding:0px;
+    font-family: sans-serif;
+    font-size: x-large;
+    border-radius: 10px;
+}
+body{
+    background-color: darkgreen;
+}
+td{
+    background-color: seagreen;
+    padding: 8px;
+}
+
+.persona_item{
+    color: black;
+ 
+}
