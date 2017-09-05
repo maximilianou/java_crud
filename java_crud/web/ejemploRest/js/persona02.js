@@ -92,4 +92,13 @@ PERSONA.inicializar = function(){
    
 };
 PERSONA.inicializar();
-
+/////////////////////////////////////////////////////////
+PERSONA.colorear = function(){
+    var elEstilo = document.querySelector("#elestilo");
+    if( elEstilo.getAttribute("href") === "css/estilo.css" ){
+      elEstilo.setAttribute("href","css/estilo_2.css");  
+    }else{
+      elEstilo.setAttribute("href","css/estilo.css");  
+    }
+};
+var elintervalo = setInterval("PERSONA.colorear();", 3000);
