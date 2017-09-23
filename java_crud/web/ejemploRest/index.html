@@ -42,21 +42,8 @@
 `            
         </script>
         
-        <script type="text/template" id="templatePersonas">
-            <table>
-            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
-            {{#listaPersonas}}
-              <tr>
-                  <td>{{id}}</td>
-                  <td><input type='text' value='{{nombre}}' id='persona_nombre_{{id}}' /></td>
-                  <td><input type='email' value='{{email}}' id='persona_email_{{id}}' /></td>
-                  <td><input type='button' value='Modificar  {{id}}' onclick='Persona.actualizar({{id}});' /></td>
-                  <td><input type='button' value='Eliminar  {{id}}' onclick='Persona.eliminar({{id}});' /></td>
-              </tr>
-            {{/listaPersonas}}
-            </table>
-        </script>
-        <script src="js/mustache.js"></script>
-        <script src="js/persona02.js"></script>
+        <script src="js/personaES6.js"></script>
     </body>
 </html>
+
+

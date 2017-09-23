@@ -8,7 +8,6 @@ import java.sql.*;
 public class DB {
 
     private static DB INSTANCE = null;
-    //private static String LABASE = "jdbc:hsqldb:file:"+System.getProperty("user.home")+"/personas.hsqldb";
     private static String LABASE = "jdbc:mysql://localhost/dbrest";
     private static String LABASEUSUARIO = "educacion";  // "root";
     private static String LABASECLAVE = "educacion";    //"root";
