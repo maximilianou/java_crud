@@ -136,8 +136,8 @@ public class PersonaDao {
         }
         try {
             Persona a = new Persona();
-            a.setNombre("Enzo");
-            a.setEmail("Enzo@gmail.com");
+            a.setNombre("Paturuzu");
+            a.setEmail("paturuzu@gmail.com");
             PersonaDao.insertar(a);
         } catch (Exception ex) {
             ex.printStackTrace();

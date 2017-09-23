@@ -1,6 +1,5 @@
-Persona = {};
-
-Persona.insertar = function(){
+class Persona{
+  static insertar(){
     var xhr = new XMLHttpRequest();
     // Metodo INSERTAR, Accion PersonaServer
     xhr.open("POST","../PersonaServer");
@@ -16,8 +15,9 @@ Persona.insertar = function(){
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
     xhr.send(  personaStringJSON );
-};
-Persona.actualizar = function(paramId){
+      
+  }  
+  static actualizar(){
     var xhr = new XMLHttpRequest();
     // Metodo ACTUALIZAR, Accion PersonaServer
     xhr.open("PUT","../PersonaServer");
@@ -34,9 +34,9 @@ Persona.actualizar = function(paramId){
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
     xhr.send( personaStringJSON );
-};
-Persona.eliminar = function(paramId){
-
+      
+  }  
+  static eliminar(){
     // objeto para enviar los parametros del formulario
     var persona = {};
     persona.id = paramId;
@@ -55,13 +55,15 @@ Persona.eliminar = function(paramId){
     };
     //xhr.send( personaStringJSON );
     xhr.send(  );
-};
-Persona.consultar = function(){
+      
+  }  
+  static consultar(){
     var xhr = new XMLHttpRequest();
     // Metodo CONSULTAR, Accion PersonaServer
     xhr.open("GET","../PersonaServer");
     xhr.onreadystatechange = function(){
         if( xhr.readyState === 4 && xhr.status === 200){
+            //document.querySelector('#panelResultados').innerHTML += xhr.responseText + '<br/>';
             var personas = JSON.parse( xhr.responseText );
             var templatePersonas = document.querySelector("#templatePersonasES6").innerHTML;
             document.querySelector('#panelResultados').innerHTML = eval( templatePersonas );
@@ -74,7 +76,9 @@ Persona.consultar = function(){
     // formato del mensaje en JSON
     var personaStringJSON = JSON.stringify(persona);
     xhr.send( personaStringJSON );
-};
+      
+  }  
+}
 /////////////////////////////////////////
 
 Persona.inicializar = function(){
@@ -89,13 +93,3 @@ Persona.inicializar = function(){
    
 };
 Persona.inicializar();
-/////////////////////////////////////////////////////////
-Persona.colorear = function(){
-    var elEstilo = document.querySelector("#elestilo");
-    if( elEstilo.getAttribute("href") === "css/estilo.css" ){
-      elEstilo.setAttribute("href","css/estilo_2.css");  
-    }else{
-      elEstilo.setAttribute("href","css/estilo.css");  
-    }
-};
-var elintervalo = setInterval("Persona.colorear();", 3000);

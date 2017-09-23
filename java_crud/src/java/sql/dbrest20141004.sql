@@ -23,8 +23,8 @@ INSERT INTO personas (per_nombre, per_email) VALUES
 ('julieta', 'juli@gmail'),
 ('marcelo', 'marce@gmail'),
 ('vicky', 'vicky@gmail'),
-('dieguito', 'dieguito@gmail'),
+('felix', 'felix@gmail'),
 ('pedro', 'peter@gmail'),
 ('carlos', 'carlitos@gmail'),
-('sabrina', 'sabri@gmail');
+('simona', 'simo@gmail');
 

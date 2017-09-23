@@ -1,7 +1,7 @@
 // Javascript: Inicializacion de Objeto PERSONA Instanciado con Llaves
-PERSONA = {};
+Persona = {};
 // Creacion de un Metodo insertar() en el Objeto PERSONA
-PERSONA.insertar = function(){
+Persona.insertar = function(){
     // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo INSERTAR, Accion PersonaServer
@@ -24,7 +24,7 @@ PERSONA.insertar = function(){
     xhr.send(  personaStringJSON );
 };
 // Creacion de un Metodo consultar() en el Objeto PERSONA
-PERSONA.consultar = function(){
+Persona.consultar = function(){
     // Instanciar el Objeto AJAX que existe en todos los Navegadores Web
     var xhr = new XMLHttpRequest();
     // Metodo CONSULTAR, Accion PersonaServer
@@ -43,15 +43,15 @@ PERSONA.consultar = function(){
 };
 /////////////////////////////////////////
 // Inicializa en la pagina HTML los Eventos que ejecutan el Javascript
-PERSONA.inicializar = function(){
+Persona.inicializar = function(){
     // Agregar en los botones visuales HTML, las acciones Javascript
     var elemInsertar = document.querySelector('#btnInsertar');    
-    elemInsertar.setAttribute('onclick',"PERSONA.insertar();");
+    elemInsertar.setAttribute('onclick',"Persona.insertar();");
     var elemConsultar = document.querySelector('#btnConsultar');    
-    elemConsultar.setAttribute('onclick',"PERSONA.consultar();");
+    elemConsultar.setAttribute('onclick',"Persona.consultar();");
    
 };
 // Se llama a la inicializacion de la pagina, 
 // incorpora de forma NO Intrusiva el codigo javascript en el html
-PERSONA.inicializar();
+Persona.inicializar();
 
