@@ -6,14 +6,16 @@ import java.util.logging.Logger;
  * @author maximilianou@gmail.com
  */
 public class Readme {
-    String salida = "README.md";
+    String salida = "../README.md";
     String[] archivos = {
         "web/ejemploRest/README.md",
         "web/ejemploRest/persona03.html",
-        "web/ejemploRest/js/README.md",
-        "web/ejemploRest/js/persona03.js",
         "web/ejemploRest/css/README.md",
         "web/ejemploRest/css/estilo.css",
+        "web/ejemploRest/js/README.md",
+        "web/ejemploRest/js/persona03.js",
+        "src/java/sql/README.md",
+        "src/java/sql/dbrest.sql",
         "src/java/ejemploRest/README.md",
         "src/java/ejemploRest/Persona.java",
         "src/java/ejemploRest/DB.java",
