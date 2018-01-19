@@ -6,7 +6,8 @@ import java.util.logging.Logger;
  * @author maximilianou@gmail.com
  */
 public class Readme {
-    String salida = "../README.md";
+    String salida = "README.md";
+    String salidaFILE = "../README.md";
     String[] archivos = {
         "web/ejemploRest/README.md",
         "web/ejemploRest/persona03.html",
@@ -28,9 +29,9 @@ public class Readme {
     FileWriter arch = null;
     BufferedWriter barch = null;
     public void inicializar() throws IOException {
-        File fs = new File(salida);
+        File fs = new File(salidaFILE);
         fs.delete();
-        arch = new FileWriter(salida, true);
+        arch = new FileWriter(salidaFILE, true);
         barch = new BufferedWriter(arch);
     }
     public void exportar() {

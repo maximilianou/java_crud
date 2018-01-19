@@ -1,13 +1,13 @@
->      ##  HTML.
->      -----
->      
->      * HTML, structural html.
->      * FORM Input Button
->      * LINK css
->      * SCRIPT javascript
->      
->      >        web/ejemploRest/persona03.html
->              
+##  HTML.
+-----
+
+* HTML, structural html.
+* FORM Input Button
+* LINK css
+* SCRIPT javascript
+
+>        web/ejemploRest/persona03.html
+        
 ----- 
 >      <!DOCTYPE html>
 >      <html>
@@ -54,14 +54,14 @@
 >          </body>
 >      </html>
 ----- 
->      ##  CSS, minimal just to know where it fits.
->      -----
->      
->      * CSS selectors to connect elements and style
->      
->      >        web/ejemploRest/css/estilo.css
->      
->              
+##  CSS, minimal just to know where it fits.
+-----
+
+* CSS selectors to connect elements and style
+
+>        web/ejemploRest/css/estilo.css
+
+        
 ----- 
 >      *{
 >          margin:0px;
@@ -81,14 +81,14 @@
 >          font-size: large;
 >      }
 ----- 
->      ##  Javascript, minimal CRUD.
->      -----
->      
->      * Javascript OOP, class, fetch, JSON
->      * css selectors to connect elements and utilities
->      
->      >        web/ejemploRest/js/persona03.js
->              
+##  Javascript, minimal CRUD.
+-----
+
+* Javascript OOP, class, fetch, JSON
+* css selectors to connect elements and utilities
+
+>        web/ejemploRest/js/persona03.js
+        
 ----- 
 >      class Persona {
 >      
@@ -173,14 +173,14 @@
 >      Persona.inicializar();
 >      /////////////////////////////////////////
 ----- 
->      ##  SQL CREATE INSERT.
->      -----
->      
->      * Ejemplo Creando la base de datos.
->      * Ejemplo Insertando en la base de datos
->      
->      >        sql/dbrest.sql
->      >        
+##  SQL CREATE INSERT.
+-----
+
+* Ejemplo Creando la base de datos.
+* Ejemplo Insertando en la base de datos
+
+>        sql/dbrest.sql
+>        
 ----- 
 >      CREATE DATABASE dbrest;
 >      USE dbrest;
@@ -213,46 +213,46 @@
 >      ('Simona', 'simo@gmail');
 >      
 ----- 
->      ##  Java. POJO ( Plain Old Java Object )
->      -----
->      
->      * Simple base clase.
->      * Class Naming Conventions.
->      * attributes.
->      * methods.
->      * Encapsulation. ( getter and setters )
->      * Overriding. ( toString )
->      
->      >        ejemploRest/Persona.java
->      
->      ##  Java. DB ( Database Connection Utility )
->      -----
->      
->      * Utility to connect to database
->      * Encapsulating user, password, url
->      
->      >        ejemploRest/DB.java
->      
->      ##  Java. DAO ( Data Access Object )
->      -----
->      
->      * Here we translate Database Table to Java Objects
->      
->      >        ejemploRest/PersonaDao.java
->      
->      ##  Java Rest ( Representational state transfer )
->      -----
->      
->      * Java. Servlet, the simplest web HTTP  GET, POST, PUT, DELETE
->      * Over JSON as messages protocol
->      * HTTP method: GET    ( SQL alias SELECT )
->      * HTTP method: POST   ( SQL alias INSERT ) 
->      * HTTP method: PUT    ( SQL alias UPDATE )
->      * HTTP method: DELETE ( SQL alias DELETE )
->      
->      >        ejemploRest/PersonaServer.java
->      
->              
+##  Java. POJO ( Plain Old Java Object )
+-----
+
+* Simple base clase.
+* Class Naming Conventions.
+* attributes.
+* methods.
+* Encapsulation. ( getter and setters )
+* Overriding. ( toString )
+
+>        ejemploRest/Persona.java
+
+##  Java. DB ( Database Connection Utility )
+-----
+
+* Utility to connect to database
+* Encapsulating user, password, url
+
+>        ejemploRest/DB.java
+
+##  Java. DAO ( Data Access Object )
+-----
+
+* Here we translate Database Table to Java Objects
+
+>        ejemploRest/PersonaDao.java
+
+##  Java Rest ( Representational state transfer )
+-----
+
+* Java. Servlet, the simplest web HTTP  GET, POST, PUT, DELETE
+* Over JSON as messages protocol
+* HTTP method: GET    ( SQL alias SELECT )
+* HTTP method: POST   ( SQL alias INSERT ) 
+* HTTP method: PUT    ( SQL alias UPDATE )
+* HTTP method: DELETE ( SQL alias DELETE )
+
+>        ejemploRest/PersonaServer.java
+
+        
 ----- 
 >      package ejemploRest;
 >      
@@ -611,14 +611,14 @@
 >      
 >      }
 ----- 
->      ##  Export, Utilitario, Herramienta.
->      -----
->      
->      * Ejemplo java exportar los archivos README.md
->      * Ejemplo java exportar el codigo fuente.
->      
->      >        util.Readme.java
->      >        
+##  Export, Utilitario, Herramienta.
+-----
+
+* Ejemplo java exportar los archivos README.md
+* Ejemplo java exportar el codigo fuente.
+
+>        util.Readme.java
+>        
 ----- 
 >      package util;
 >      import java.io.*;
@@ -628,7 +628,8 @@
 >       * @author maximilianou@gmail.com
 >       */
 >      public class Readme {
->          String salida = "../README.md";
+>          String salida = "README.md";
+>          String salidaFILE = "../README.md";
 >          String[] archivos = {
 >              "web/ejemploRest/README.md",
 >              "web/ejemploRest/persona03.html",
@@ -650,9 +651,9 @@
 >          FileWriter arch = null;
 >          BufferedWriter barch = null;
 >          public void inicializar() throws IOException {
->              File fs = new File(salida);
+>              File fs = new File(salidaFILE);
 >              fs.delete();
->              arch = new FileWriter(salida, true);
+>              arch = new FileWriter(salidaFILE, true);
 >              barch = new BufferedWriter(arch);
 >          }
 >          public void exportar() {
@@ -704,16 +705,16 @@
 >          }
 >      }
 ----- 
->      -----
->      
->      ## The MIT License
->      
->      Copyright (c) 2009 - 2018 Maximiliano Usich maximilianou@gmail.com
->      
->      Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
->      
->      The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
->      
->      THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
->      
+-----
+
+## The MIT License
+
+Copyright (c) 2009 - 2018 Maximiliano Usich maximilianou@gmail.com
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
 ----- 
