@@ -1,10 +1,15 @@
 package ejemploRest;
 
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.sql.*;
 
+/**
+ * Design Patterns Explained
+ * https://en.wikipedia.org/wiki/Software_design_pattern
+ * 
+ * Singleton Design Patterns Explained
+ * https://en.wikipedia.org/wiki/Singleton_pattern
+ */
 public class DB {
 
     private static DB INSTANCE = null;

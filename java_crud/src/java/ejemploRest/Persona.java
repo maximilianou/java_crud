@@ -1,5 +1,13 @@
 package ejemploRest;
 
+/**
+* Simple base class.
+* Class Naming Conventions.
+* attributes.
+* methods.
+* Encapsulation. ( getter and setters )
+* Overriding. ( toString )
+*/
 public class Persona {
 
     private String id;

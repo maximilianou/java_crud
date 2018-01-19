@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * Design Patterns Explained
+ * https://en.wikipedia.org/wiki/Software_design_pattern
+ */
 public class PersonaDao {
 
     private PersonaDao() throws ClassNotFoundException,

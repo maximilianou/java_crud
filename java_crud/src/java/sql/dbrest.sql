@@ -20,11 +20,11 @@ CREATE TABLE IF NOT EXISTS personas (
 --
 
 INSERT INTO personas (per_nombre, per_email) VALUES
-('julieta', 'juli@gmail'),
-('marcelo', 'marce@gmail'),
-('vicky', 'vicky@gmail'),
-('felix', 'felix@gmail'),
-('pedro', 'peter@gmail'),
-('carlos', 'carlitos@gmail'),
-('simona', 'simo@gmail');
+('Julieta', 'juli@gmail'),
+('Marcelo', 'marce@gmail'),
+('Victoria', 'vicky@gmail'),
+('Felix', 'felix@gmail'),
+('Pedro', 'peter@gmail'),
+('Carlos', 'carlitos@gmail'),
+('Simona', 'simo@gmail');
 
