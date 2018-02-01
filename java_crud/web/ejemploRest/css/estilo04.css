@@ -1,0 +1,22 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color: chocolate;
+}
+td{
+    background-color: salmon;
+    padding: 2px;
+}
+
+.persona_item{
+    background-color: brown;
+    color: snow;
+    font-size: large;
+}
+#panelMensajes{
+    background-color: darkolivegreen;
+    color: white;
+    font-weight: bold;
+}

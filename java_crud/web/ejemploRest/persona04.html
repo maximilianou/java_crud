@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contacto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo04.css" rel="stylesheet" id="elestilo"/>
+    </head>
+    <body>
+        <div>Contacto</div>
+        <section id="panelFiltro">
+            <form action="" method="GET">
+                <input type="text" name="persona_nombre" id="persona_nombre" maxlength="200" />
+                <input type="email" name="persona_email" id="persona_email" maxlength="200" />
+                <input type="button" id="btnInsertar" value="Insertar" />
+                <input type="button" id="btnConsultar" value="Consultar" />
+            </form>
+        </section>
+        <section id="panelResultados">
+
+        </section>
+        <section id="panelMensajes">
+
+        </section>
+
+        <script type="text/template" id="templatePersonasES6">
+`
+    <table>
+            <tr><th>Nombre</th><th>Email</th><th>ID</th></tr>
+    ${ personas.map( persona => 
+    `
+              <tr class='persona_item'>
+                  <td>${persona.id}</td>
+                  <td><input type='text' value='${persona.nombre}' id='persona_nombre_${persona.id}' /></td>
+                  <td><input type='email' value='${persona.email}' id='persona_email_${persona.id}' /></td>
+                  <td><input type='button' value='Modificar  ${persona.id}' onclick='Persona.actualizar(${persona.id});' /></td>
+                  <td><input type='button' value='Eliminar  ${persona.id}' onclick='Persona.eliminar(${persona.id});' /></td>
+              </tr>
+    `
+        ).join('')
+      }
+    </table>
+`            
+        </script>
+        <script src="js/persona04.js"></script>
+    </body>
+</html>
