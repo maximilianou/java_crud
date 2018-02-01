@@ -6,18 +6,21 @@ class Persona {
         elemConsultar.setAttribute('onclick', "Persona.consultar();");
     }
     static insertar() {
-        let persona = {};
-        persona.nombre = document.querySelector("#persona_nombre").value;
-        persona.email = document.querySelector("#persona_email").value;
-        let personaStringJSON = JSON.stringify(persona);
-        fetch("../PersonaServer",
-                {method: 'POST', body: personaStringJSON})
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (datotexto) {
-                    document.querySelector('#panelResultados').innerHTML = datotexto;
+        const traer = async() => {
+            let persona = {};
+            persona.nombre = document.querySelector("#persona_nombre").value;
+            persona.email = document.querySelector("#persona_email").value;
+            let personaStringJSON = JSON.stringify(persona);
+            let respuesta = await fetch("../PersonaServer",
+                    {method: 'POST', body: personaStringJSON});
+            let datotexto = JSON.parse(await respuesta.text());
+            document.querySelector('#panelResultados').innerHTML = datotexto;
+        }
+        traer()
+                .catch(ex => {
+                    document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
                 });
+
     }
     static actualizar(paramId) {
         const traer = async() => {
