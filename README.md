@@ -1,3 +1,87 @@
+##  Javascript, minimal CRUD.
+-----
+
+* Javascript OOP, class, fetch, JSON
+* css selectors to connect elements and utilities
+
+>        
+        
+----- 
+>      class Persona {
+>          static inicializar() {
+>              let elemInsertar = document.querySelector('#btnInsertar');
+>              elemInsertar.setAttribute('onclick', "Persona.insertar();");
+>              let elemConsultar = document.querySelector('#btnConsultar');
+>              elemConsultar.setAttribute('onclick', "Persona.consultar();");
+>          }
+>          static insertar() {
+>              const traer = async() => {
+>                  let persona = {};
+>                  persona.nombre = document.querySelector("#persona_nombre").value;
+>                  persona.email = document.querySelector("#persona_email").value;
+>                  let personaStringJSON = JSON.stringify(persona);
+>                  let respuesta = await fetch("../PersonaServer",
+>                          {method: 'POST', body: personaStringJSON});
+>                  let datotexto = JSON.parse(await respuesta.text());
+>                  document.querySelector('#panelResultados').innerHTML = datotexto;
+>              };
+>              traer()
+>                      .catch(ex => {
+>                          document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
+>                      });
+>      
+>          }
+>          static actualizar(paramId) {
+>              const traer = async() => {
+>                  let persona = {};
+>                  persona.id = paramId;
+>                  persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
+>                  persona.email = document.querySelector("#persona_email_" + paramId).value;
+>                  let personaStringJSON = JSON.stringify(persona);
+>                  let respuesta = await fetch("../PersonaServer",
+>                          {method: 'PUT', body: personaStringJSON});
+>                  let datotexto = JSON.parse(await respuesta.text());
+>                  document.querySelector('#panelResultados').innerHTML = datotexto;
+>              };
+>              traer()
+>                      .catch(ex => {
+>                          document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
+>                      });
+>          }
+>          static eliminar(paramId) {
+>              const traer = async() => {
+>                  let persona = {};
+>                  persona.id = paramId;
+>                  persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
+>                  persona.email = document.querySelector("#persona_email_" + paramId).value;
+>                  let personaStringJSON = JSON.stringify(persona);
+>                  let respuesta = await fetch("../PersonaServer?&q=" + personaStringJSON,
+>                          {method: 'DELETE'});
+>                  let datotexto = JSON.parse(await respuesta.text());
+>                  document.querySelector('#panelResultados').innerHTML = datotexto;
+>              };
+>              traer()
+>                      .catch(ex => {
+>                          document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
+>                      });
+>          }
+>          static consultar() {
+>              const traer = async() => {
+>                  let respuesta = await fetch("../PersonaServer", {method: 'GET'});
+>                  let personas = JSON.parse(await respuesta.text());
+>                  let templatePersonas = await document.querySelector("#templatePersonasES6").innerHTML;
+>                  document.querySelector('#panelResultados').innerHTML = await eval(templatePersonas);
+>              };
+>              traer()
+>                      .catch(ex => {
+>                          document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
+>                      });
+>          }
+>      }
+>      ///////////////////////////////////////// main() // Ejecucion Inicial Default
+>      Persona.inicializar();
+>      /////////////////////////////////////////
+----- 
 ##  HTML.
 -----
 
@@ -6,7 +90,7 @@
 * LINK css
 * SCRIPT javascript
 
->        web/ejemploRest/persona03.html
+>        
         
 ----- 
 >      <!DOCTYPE html>
@@ -15,7 +99,7 @@
 >              <title>Contacto</title>
 >              <meta charset="UTF-8">
 >              <meta name="viewport" content="width=device-width, initial-scale=1.0">
->              <link href="css/estilo.css" rel="stylesheet" id="elestilo"/>
+>              <link href="css/estilo04.css" rel="stylesheet" id="elestilo"/>
 >          </head>
 >          <body>
 >              <div>Contacto</div>
@@ -28,6 +112,9 @@
 >                  </form>
 >              </section>
 >              <section id="panelResultados">
+>      
+>              </section>
+>              <section id="panelMensajes">
 >      
 >              </section>
 >      
@@ -50,7 +137,7 @@
 >          </table>
 >      `            
 >              </script>
->              <script src="js/persona03.js"></script>
+>              <script src="js/persona04.js"></script>
 >          </body>
 >      </html>
 ----- 
@@ -59,7 +146,7 @@
 
 * CSS selectors to connect elements and style
 
->        web/ejemploRest/css/estilo.css
+>        
 
         
 ----- 
@@ -80,138 +167,11 @@
 >          color: snow;
 >          font-size: large;
 >      }
------ 
-##  Javascript, minimal CRUD.
------
-
-* Javascript OOP, class, fetch, JSON
-* css selectors to connect elements and utilities
-
->        web/ejemploRest/js/persona03.js
-        
------ 
->      class Persona {
->      
->          static inicializar() {
->              let elemInsertar = document.querySelector('#btnInsertar');
->              elemInsertar.setAttribute('onclick', "Persona.insertar();");
->              let elemConsultar = document.querySelector('#btnConsultar');
->              elemConsultar.setAttribute('onclick', "Persona.consultar();");
->          }
->          
->          static insertar() {
->              // objeto para enviar los parametros del formulario
->              let persona = {};
->              persona.nombre = document.querySelector("#persona_nombre").value;
->              persona.email = document.querySelector("#persona_email").value;
->              // formato del mensaje en JSON
->              let personaStringJSON = JSON.stringify(persona);
->              // Reemplazo de Ajax a Fetch
->              fetch("../PersonaServer",
->                      {method: 'POST', body: personaStringJSON})
->                      .then(function (response) {
->                          return response.text();
->                      })
->                      .then(function (datotexto) {
->                          document.querySelector('#panelResultados').innerHTML = datotexto;
->                      });
->          }
->          
->          static actualizar(paramId) {
->              // objeto para enviar los parametros del formulario
->              let persona = {};
->              persona.id = paramId;
->              persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
->              persona.email = document.querySelector("#persona_email_" + paramId).value;
->              // formato del mensaje en JSON
->              let personaStringJSON = JSON.stringify(persona);
->              // Reemplazo de Ajax a Fetch
->              fetch("../PersonaServer",
->                      {method: 'PUT', body: personaStringJSON})
->                      .then(function (response) {
->                          return response.text();
->                      })
->                      .then(function (datotexto) {
->                          document.querySelector('#panelResultados').innerHTML = datotexto;
->                      });
->          }
->          
->          static eliminar(paramId) {
->              // objeto para enviar los parametros del formulario
->              let persona = {};
->              persona.id = paramId;
->              persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
->              persona.email = document.querySelector("#persona_email_" + paramId).value;
->              // formato del mensaje en JSON
->              let personaStringJSON = JSON.stringify(persona);
->              // Reemplazo de Ajax a Fetch
->              fetch("../PersonaServer?&q=" + personaStringJSON,
->                      {method: 'DELETE'})
->                      .then(function (response) {
->                          return response.text();
->                      })
->                      .then(function (datotexto) {
->                          document.querySelector('#panelResultados').innerHTML = datotexto;
->                      });
->          }
->          
->          static consultar() {
->              // Reemplazo de Ajax a Fetch
->              fetch("../PersonaServer",
->                      {method: 'GET'})
->                      .then(function (response) {
->                          return response.text();
->                      })
->                      .then(function (datotexto) {
->                          let personas = JSON.parse(datotexto);
->                          let templatePersonas = document.querySelector("#templatePersonasES6").innerHTML;
->                          document.querySelector('#panelResultados').innerHTML = eval(templatePersonas);
->                      });
->          }
+>      #panelMensajes{
+>          background-color: darkolivegreen;
+>          color: white;
+>          font-weight: bold;
 >      }
->      ///////////////////////////////////////// main() // Ejecucion Inicial Default
->      Persona.inicializar();
->      /////////////////////////////////////////
------ 
-##  SQL CREATE INSERT.
------
-
-* Ejemplo Creando la base de datos.
-* Ejemplo Insertando en la base de datos
-
->        sql/dbrest.sql
->        
------ 
->      CREATE DATABASE dbrest;
->      USE dbrest;
->      
->      -- --------------------------------------------------------
->      
->      --
->      -- Table structure for table 'personas'
->      --
->      
->      DROP TABLE IF EXISTS personas;
->      CREATE TABLE IF NOT EXISTS personas (
->        per_id int(11) NOT NULL AUTO_INCREMENT,
->        per_nombre varchar(250) NOT NULL,
->        per_email varchar(250) NOT NULL,
->        PRIMARY KEY (per_id)
->      ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
->      
->      --
->      -- Dumping data for table 'personas'
->      --
->      
->      INSERT INTO personas (per_nombre, per_email) VALUES
->      ('Julieta', 'juli@gmail'),
->      ('Marcelo', 'marce@gmail'),
->      ('Victoria', 'vicky@gmail'),
->      ('Felix', 'felix@gmail'),
->      ('Pedro', 'peter@gmail'),
->      ('Carlos', 'carlitos@gmail'),
->      ('Simona', 'simo@gmail');
->      
 ----- 
 ##  Java. POJO ( Plain Old Java Object )
 -----
@@ -256,92 +216,111 @@
 ----- 
 >      package ejemploRest;
 >      
+>      import com.google.gson.Gson;
+>      import java.io.*;
+>      import java.sql.SQLException;
+>      import java.util.ArrayList;
+>      import javax.servlet.ServletException;
+>      import javax.servlet.annotation.WebServlet;
+>      import javax.servlet.http.*;
+>      
 >      /**
->      * Simple base class.
->      * Class Naming Conventions.
->      * attributes.
->      * methods.
->      * Encapsulation. ( getter and setters )
->      * Overriding. ( toString )
->      */
->      public class Persona {
+>       * Rest Explained
+>       * https://en.wikipedia.org/wiki/Representational_state_transfer
+>       */
+>      @WebServlet(name = "PersonaServer", urlPatterns = {"/PersonaServer"})
+>      public class PersonaServer extends HttpServlet {
 >      
->          private String id;
->          private String nombre;
->          private String email;
+>          final static Gson CONVERTIR = new Gson();
 >      
->          public String getId() {
->              return id;
->          }
+>          @Override
+>          protected void doGet(HttpServletRequest request, HttpServletResponse response)
+>                  throws ServletException, IOException {
+>              response.setContentType("text/html;charset=UTF-8");
+>              PrintWriter out = response.getWriter();
+>              try {
 >      
->          public void setId(String id) {
->              this.id = id;
->          }
+>                  String texto = request.getReader().readLine();
+>                  ArrayList<Persona> listado = PersonaDao.getInstance().obtener();
+>                  String resultado = CONVERTIR.toJson(listado);
+>                  out.println("" + resultado);
 >      
->          public String getNombre() {
->              return nombre;
->          }
->      
->          public void setNombre(String nombre) {
->              this.nombre = nombre;
->          }
->      
->          public String getEmail() {
->              return email;
->          }
->      
->          public void setEmail(String email) throws Exception {
->              if ( email.contains("@") ) {
->                  this.email = email;
->              } else {
->                  throw new Exception("Ponele Arroba al Email!!!!");
+>              } catch (ClassNotFoundException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (SQLException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (Exception ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } finally {
+>                  out.close();
 >              }
->      
 >          }
 >      
 >          @Override
->          public String toString() {
->              return "Persona: " + nombre + " : " + email;
->          }
->          
->          public void validar() throws Exception{
->              this.setEmail( this.getEmail() );
->          }
+>          protected void doPost(HttpServletRequest request, HttpServletResponse response)
+>                  throws ServletException, IOException {
+>              response.setContentType("text/html;charset=UTF-8");
+>              PrintWriter out = response.getWriter();
+>              try {
 >      
->      }
------ 
->      package ejemploRest;
+>                  String texto = request.getReader().readLine();
 >      
->      import java.io.IOException;
->      import java.sql.*;
+>                  Persona personaParametro = CONVERTIR.fromJson(texto, Persona.class);
+>                  personaParametro.validar();
 >      
->      /**
->       * Design Patterns Explained
->       * https://en.wikipedia.org/wiki/Software_design_pattern
->       * 
->       * Singleton Design Patterns Explained
->       * https://en.wikipedia.org/wiki/Singleton_pattern
->       */
->      public class DB {
+>                  PersonaDao.insertar(personaParametro);
+>                  out.println(CONVERTIR.toJson("OK"));
 >      
->          private static DB INSTANCE = null;
->          private static String LABASE = "jdbc:mysql://localhost/dbrest";
->          private static String LABASEUSUARIO = "educacion";  // "root";
->          private static String LABASECLAVE = "educacion";    //"root";
->          public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
->              if (INSTANCE == null) {
->                  INSTANCE = new DB();
+>              } catch (ClassNotFoundException ex) {
+>                  out.println("Verificar: " + ex.getMessage());
+>              } catch (SQLException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (Exception ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } finally {
+>                  out.close();
 >              }
->              return INSTANCE;
->          }
->          private DB() throws ClassNotFoundException,
->                  IOException, SQLException {
 >          }
 >      
->          public Connection getConnection() throws ClassNotFoundException,
->                  IOException, SQLException {
->              Class.forName("com.mysql.jdbc.Driver");
->              return DriverManager.getConnection(LABASE, LABASEUSUARIO, LABASECLAVE);
+>          @Override
+>          protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+>              response.setContentType("text/html;charset=UTF-8");
+>              PrintWriter out = response.getWriter();
+>              try {
+>                  Persona personaParametro = CONVERTIR.fromJson(request.getReader(), Persona.class);
+>                  PersonaDao.actualizar(personaParametro);
+>                  out.println(CONVERTIR.toJson("OK"));
+>              } catch (ClassNotFoundException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (SQLException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (Exception ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } finally {
+>                  out.close();
+>              }
+>          }
+>      
+>          @Override
+>          protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+>              response.setContentType("text/html;charset=UTF-8");
+>              PrintWriter out = response.getWriter();
+>              try {
+>      
+>                  Persona personaParametro = CONVERTIR.fromJson(request.getParameter("q"), Persona.class);
+>      
+>                  PersonaDao.borrar(personaParametro);
+>                  out.println(CONVERTIR.toJson("OK"));
+>      
+>              } catch (ClassNotFoundException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (SQLException ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } catch (Exception ex) {
+>                  out.println("Verificar:" + ex.getMessage());
+>              } finally {
+>                  out.close();
+>              }
 >          }
 >      
 >      }
@@ -502,114 +481,135 @@
 ----- 
 >      package ejemploRest;
 >      
->      import com.google.gson.Gson;
->      import java.io.*;
->      import java.sql.SQLException;
->      import java.util.ArrayList;
->      import javax.servlet.ServletException;
->      import javax.servlet.annotation.WebServlet;
->      import javax.servlet.http.*;
->      
 >      /**
->       * Rest Explained
->       * https://en.wikipedia.org/wiki/Representational_state_transfer
->       */
->      @WebServlet(name = "PersonaServer", urlPatterns = {"/PersonaServer"})
->      public class PersonaServer extends HttpServlet {
+>      * Simple base class.
+>      * Class Naming Conventions.
+>      * attributes.
+>      * methods.
+>      * Encapsulation. ( getter and setters )
+>      * Overriding. ( toString )
+>      */
+>      public class Persona {
 >      
->          final static Gson CONVERTIR = new Gson();
+>          private String id;
+>          private String nombre;
+>          private String email;
 >      
->          @Override
->          protected void doGet(HttpServletRequest request, HttpServletResponse response)
->                  throws ServletException, IOException {
->              response.setContentType("text/html;charset=UTF-8");
->              PrintWriter out = response.getWriter();
->              try {
+>          public String getId() {
+>              return id;
+>          }
 >      
->                  String texto = request.getReader().readLine();
->                  ArrayList<Persona> listado = PersonaDao.getInstance().obtener();
->                  String resultado = CONVERTIR.toJson(listado);
->                  out.println("" + resultado);
+>          public void setId(String id) {
+>              this.id = id;
+>          }
 >      
->              } catch (ClassNotFoundException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (SQLException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (Exception ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } finally {
->                  out.close();
+>          public String getNombre() {
+>              return nombre;
+>          }
+>      
+>          public void setNombre(String nombre) {
+>              this.nombre = nombre;
+>          }
+>      
+>          public String getEmail() {
+>              return email;
+>          }
+>      
+>          public void setEmail(String email) throws Exception {
+>              if ( email.contains("@") ) {
+>                  this.email = email;
+>              } else {
+>                  throw new Exception("Ponele Arroba al Email!!!!");
 >              }
+>      
 >          }
 >      
 >          @Override
->          protected void doPost(HttpServletRequest request, HttpServletResponse response)
->                  throws ServletException, IOException {
->              response.setContentType("text/html;charset=UTF-8");
->              PrintWriter out = response.getWriter();
->              try {
->      
->                  String texto = request.getReader().readLine();
->      
->                  Persona personaParametro = CONVERTIR.fromJson(texto, Persona.class);
->                  personaParametro.validar();
->      
->                  PersonaDao.insertar(personaParametro);
->                  out.println(CONVERTIR.toJson("OK"));
->      
->              } catch (ClassNotFoundException ex) {
->                  out.println("Verificar: " + ex.getMessage());
->              } catch (SQLException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (Exception ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } finally {
->                  out.close();
->              }
+>          public String toString() {
+>              return "Persona: " + nombre + " : " + email;
 >          }
->      
->          @Override
->          protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
->              response.setContentType("text/html;charset=UTF-8");
->              PrintWriter out = response.getWriter();
->              try {
->                  Persona personaParametro = CONVERTIR.fromJson(request.getReader(), Persona.class);
->                  PersonaDao.actualizar(personaParametro);
->                  out.println(CONVERTIR.toJson("OK"));
->              } catch (ClassNotFoundException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (SQLException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (Exception ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } finally {
->                  out.close();
->              }
->          }
->      
->          @Override
->          protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
->              response.setContentType("text/html;charset=UTF-8");
->              PrintWriter out = response.getWriter();
->              try {
->      
->                  Persona personaParametro = CONVERTIR.fromJson(request.getParameter("q"), Persona.class);
->      
->                  PersonaDao.borrar(personaParametro);
->                  out.println(CONVERTIR.toJson("OK"));
->      
->              } catch (ClassNotFoundException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (SQLException ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } catch (Exception ex) {
->                  out.println("Verificar:" + ex.getMessage());
->              } finally {
->                  out.close();
->              }
+>          
+>          public void validar() throws Exception{
+>              this.setEmail( this.getEmail() );
 >          }
 >      
 >      }
+----- 
+>      package ejemploRest;
+>      
+>      import java.io.IOException;
+>      import java.sql.*;
+>      
+>      /**
+>       * Design Patterns Explained
+>       * https://en.wikipedia.org/wiki/Software_design_pattern
+>       * 
+>       * Singleton Design Patterns Explained
+>       * https://en.wikipedia.org/wiki/Singleton_pattern
+>       */
+>      public class DB {
+>      
+>          private static DB INSTANCE = null;
+>          private static String LABASE = "jdbc:mysql://localhost/dbrest";
+>          private static String LABASEUSUARIO = "educacion";  // "root";
+>          private static String LABASECLAVE = "educacion";    //"root";
+>          public static DB getInstance() throws ClassNotFoundException, IOException, SQLException {
+>              if (INSTANCE == null) {
+>                  INSTANCE = new DB();
+>              }
+>              return INSTANCE;
+>          }
+>          private DB() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>          }
+>      
+>          public Connection getConnection() throws ClassNotFoundException,
+>                  IOException, SQLException {
+>              Class.forName("com.mysql.jdbc.Driver");
+>              return DriverManager.getConnection(LABASE, LABASEUSUARIO, LABASECLAVE);
+>          }
+>      
+>      }
+----- 
+##  SQL CREATE INSERT.
+-----
+
+* Ejemplo Creando la base de datos.
+* Ejemplo Insertando en la base de datos
+
+>        sql/dbrest.sql
+>        
+----- 
+>      CREATE DATABASE dbrest;
+>      USE dbrest;
+>      
+>      -- --------------------------------------------------------
+>      
+>      --
+>      -- Table structure for table 'personas'
+>      --
+>      
+>      DROP TABLE IF EXISTS personas;
+>      CREATE TABLE IF NOT EXISTS personas (
+>        per_id int(11) NOT NULL AUTO_INCREMENT,
+>        per_nombre varchar(250) NOT NULL,
+>        per_email varchar(250) NOT NULL,
+>        PRIMARY KEY (per_id)
+>      ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+>      
+>      --
+>      -- Dumping data for table 'personas'
+>      --
+>      
+>      INSERT INTO personas (per_nombre, per_email) VALUES
+>      ('Julieta', 'juli@gmail'),
+>      ('Marcelo', 'marce@gmail'),
+>      ('Victoria', 'vicky@gmail'),
+>      ('Felix', 'felix@gmail'),
+>      ('Pedro', 'peter@gmail'),
+>      ('Carlos', 'carlitos@gmail'),
+>      ('Simona', 'simo@gmail');
+>      
 ----- 
 ##  Export, Utilitario, Herramienta.
 -----
@@ -631,19 +631,19 @@
 >          String salida = "README.md";
 >          String salidaFILE = "../README.md";
 >          String[] archivos = {
->              "web/ejemploRest/README.md",
->              "web/ejemploRest/persona03.html",
->              "web/ejemploRest/css/README.md",
->              "web/ejemploRest/css/estilo.css",
 >              "web/ejemploRest/js/README.md",
->              "web/ejemploRest/js/persona03.js",
->              "src/java/sql/README.md",
->              "src/java/sql/dbrest.sql",
+>              "web/ejemploRest/js/persona04.js",
+>              "web/ejemploRest/README.md",
+>              "web/ejemploRest/persona04.html",
+>              "web/ejemploRest/css/README.md",
+>              "web/ejemploRest/css/estilo04.css",
 >              "src/java/ejemploRest/README.md",
+>              "src/java/ejemploRest/PersonaServer.java",
+>              "src/java/ejemploRest/PersonaDao.java",
 >              "src/java/ejemploRest/Persona.java",
 >              "src/java/ejemploRest/DB.java",
->              "src/java/ejemploRest/PersonaDao.java",
->              "src/java/ejemploRest/PersonaServer.java",
+>              "src/java/sql/README.md",
+>              "src/java/sql/dbrest.sql",
 >              "src/java/util/README.md",
 >              "src/java/util/Readme.java",
 >              "src/java/license/README.md"
