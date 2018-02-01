@@ -9,19 +9,19 @@ public class Readme {
     String salida = "README.md";
     String salidaFILE = "../README.md";
     String[] archivos = {
-        "web/ejemploRest/README.md",
-        "web/ejemploRest/persona03.html",
-        "web/ejemploRest/css/README.md",
-        "web/ejemploRest/css/estilo.css",
         "web/ejemploRest/js/README.md",
-        "web/ejemploRest/js/persona03.js",
-        "src/java/sql/README.md",
-        "src/java/sql/dbrest.sql",
+        "web/ejemploRest/js/persona04.js",
+        "web/ejemploRest/README.md",
+        "web/ejemploRest/persona04.html",
+        "web/ejemploRest/css/README.md",
+        "web/ejemploRest/css/estilo04.css",
         "src/java/ejemploRest/README.md",
+        "src/java/ejemploRest/PersonaServer.java",
+        "src/java/ejemploRest/PersonaDao.java",
         "src/java/ejemploRest/Persona.java",
         "src/java/ejemploRest/DB.java",
-        "src/java/ejemploRest/PersonaDao.java",
-        "src/java/ejemploRest/PersonaServer.java",
+        "src/java/sql/README.md",
+        "src/java/sql/dbrest.sql",
         "src/java/util/README.md",
         "src/java/util/Readme.java",
         "src/java/license/README.md"

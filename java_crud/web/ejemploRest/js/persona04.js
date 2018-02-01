@@ -15,7 +15,7 @@ class Persona {
                     {method: 'POST', body: personaStringJSON});
             let datotexto = JSON.parse(await respuesta.text());
             document.querySelector('#panelResultados').innerHTML = datotexto;
-        }
+        };
         traer()
                 .catch(ex => {
                     document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
@@ -33,7 +33,7 @@ class Persona {
                     {method: 'PUT', body: personaStringJSON});
             let datotexto = JSON.parse(await respuesta.text());
             document.querySelector('#panelResultados').innerHTML = datotexto;
-        }
+        };
         traer()
                 .catch(ex => {
                     document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
@@ -50,7 +50,7 @@ class Persona {
                     {method: 'DELETE'});
             let datotexto = JSON.parse(await respuesta.text());
             document.querySelector('#panelResultados').innerHTML = datotexto;
-        }
+        };
         traer()
                 .catch(ex => {
                     document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
@@ -62,7 +62,7 @@ class Persona {
             let personas = JSON.parse(await respuesta.text());
             let templatePersonas = await document.querySelector("#templatePersonasES6").innerHTML;
             document.querySelector('#panelResultados').innerHTML = await eval(templatePersonas);
-        }
+        };
         traer()
                 .catch(ex => {
                     document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
