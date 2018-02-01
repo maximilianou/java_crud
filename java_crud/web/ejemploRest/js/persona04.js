@@ -20,18 +20,20 @@ class Persona {
                 });
     }
     static actualizar(paramId) {
-        let persona = {};
-        persona.id = paramId;
-        persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
-        persona.email = document.querySelector("#persona_email_" + paramId).value;
-        let personaStringJSON = JSON.stringify(persona);
-        fetch("../PersonaServer",
-                {method: 'PUT', body: personaStringJSON})
-                .then(function (response) {
-                    return response.text();
-                })
-                .then(function (datotexto) {
-                    document.querySelector('#panelResultados').innerHTML = datotexto;
+        const traer = async() => {
+            let persona = {};
+            persona.id = paramId;
+            persona.nombre = document.querySelector("#persona_nombre_" + paramId).value;
+            persona.email = document.querySelector("#persona_email_" + paramId).value;
+            let personaStringJSON = JSON.stringify(persona);
+            let respuesta = await fetch("../PersonaServer",
+                    {method: 'PUT', body: personaStringJSON});
+            let datotexto = JSON.parse(await respuesta.text());
+            document.querySelector('#panelResultados').innerHTML = datotexto;
+        }
+        traer()
+                .catch(ex => {
+                    document.querySelector("#panelMensajes").innerHTML = 'ERROR: ' + ex.message;
                 });
     }
     static eliminar(paramId) {
