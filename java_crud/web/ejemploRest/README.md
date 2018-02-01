@@ -6,5 +6,5 @@
 * LINK css
 * SCRIPT javascript
 
->        web/ejemploRest/persona03.html
+>        
         
